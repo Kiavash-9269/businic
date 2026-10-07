@@ -21,9 +21,9 @@ const Footer = () => {
   const emails = [
     
     "info@businic.com",
-    "bahadori@businic.com",
-    "moradi@businic.com",
-    "kiavash@businic.com",
+    // "bahadori@businic.com",
+    // "moradi@businic.com",
+    // "kiavash@businic.com",
   ];
 
   const scrollTop = () => {
@@ -113,7 +113,7 @@ const Footer = () => {
             {/* Phone */}
             <a href="tel:+989153139701">
               <Phone size={15} />
-              <span dir="ltr">+98 915 313 9701</span>
+              <span dir="ltr">+98 910 500 1519</span>
             </a>
 
             {/* Address */}
