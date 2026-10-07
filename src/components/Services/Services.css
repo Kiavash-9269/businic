@@ -1,0 +1,749 @@
+/* =========================================================
+   SERVICES SECTION — Cinematic Timeline
+========================================================= */
+
+.services-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.services-section-dark {
+  background: transparent;
+}
+
+/* ---------- Background blobs ---------- */
+
+.services-bg-blob {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.4;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent 70%);
+}
+
+.services-bg-blob-1 {
+  top: 10%;
+  inset-inline-start: -12%;
+  width: 26rem;
+  height: 26rem;
+  max-width: 55vw;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.28), transparent 70%);
+}
+
+.services-bg-blob-2 {
+  bottom: 5%;
+  inset-inline-end: -14%;
+  width: 30rem;
+  height: 30rem;
+  max-width: 60vw;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 70%);
+}
+
+.services-section-dark .services-bg-blob-1 {
+  background: rgba(14, 165, 233, 0.22);
+}
+
+.services-section-dark .services-bg-blob-2 {
+  background: rgba(56, 189, 248, 0.18);
+}
+
+/* ---------- Grid pattern ---------- */
+
+.services-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+
+  background-size: 48px 48px;
+
+  mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 50%,
+    #000 40%,
+    transparent 85%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 50%,
+    #000 40%,
+    transparent 85%
+  );
+}
+
+.services-section-dark .services-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+/* =========================================================
+   Wrapper & Header
+========================================================= */
+
+.services-wrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.services-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.4rem 0.95rem;
+
+  border: 1px solid rgba(14, 165, 233, 0.22);
+  border-radius: 999px;
+
+  background: rgba(14, 165, 233, 0.08);
+  color: #0284c7;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.services-section-dark .services-badge {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.1);
+  color: #7dd3fc;
+}
+
+.services-title {
+  margin: 1.1rem 0 0;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+
+.services-section-dark .services-title {
+  color: #f8fafc;
+}
+
+.services-description {
+  max-width: 42rem;
+  margin: 1rem auto 0;
+  color: #64748b;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  line-height: 1.85;
+}
+
+.services-section-dark .services-description {
+  color: #94a3b8;
+}
+
+.services-header-line {
+  width: 3.5rem;
+  height: 3px;
+  margin: 1.6rem auto 0;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, transparent, #0ea5e9, transparent);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+}
+
+/* =========================================================
+   List & Rail
+========================================================= */
+
+.services-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-inline-start: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .services-list {
+    padding-inline-start: 1.75rem;
+    gap: 0.75rem;
+  }
+}
+
+.services-rail {
+  position: absolute;
+  inset-inline-start: 0.9rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+
+  width: 2px;
+
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(14, 165, 233, 0.35) 10%,
+    rgba(14, 165, 233, 0.35) 90%,
+    transparent
+  );
+}
+
+@media (max-width: 640px) {
+  .services-rail {
+    inset-inline-start: 0.55rem;
+  }
+}
+
+.services-section-dark .services-rail {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(56, 189, 248, 0.35) 10%,
+    rgba(56, 189, 248, 0.35) 90%,
+    transparent
+  );
+}
+
+/* =========================================================
+   Service Row
+========================================================= */
+
+.service-row {
+  position: relative;
+  cursor: pointer;
+
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: 1.35rem;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  padding: 1.1rem 1.25rem;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  outline: none;
+}
+
+.service-row:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 3px;
+}
+
+.service-row.is-light:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(14, 165, 233, 0.25);
+  transform: translateY(-2px);
+}
+
+.service-row.is-dark {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.service-row.is-dark:hover:not(.is-active) {
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(56, 189, 248, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Active state */
+.service-row.is-active {
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.4);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 20px 45px -18px rgba(14, 165, 233, 0.28);
+}
+
+.service-row.is-active.is-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(2, 6, 23, 0.95)
+  );
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 24px 55px -20px rgba(56, 189, 248, 0.35);
+}
+
+/* Ghost number behind active card */
+.service-ghost-number {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 1.5rem;
+
+  transform: translateY(-50%);
+
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+
+  color: rgba(14, 165, 233, 0.06);
+  pointer-events: none;
+  user-select: none;
+
+  transition: color 0.3s ease;
+}
+
+.service-row.is-active .service-ghost-number {
+  color: rgba(14, 165, 233, 0.12);
+}
+
+.service-row.is-active.is-dark .service-ghost-number {
+  color: rgba(56, 189, 248, 0.12);
+}
+
+/* Rail dot */
+.service-rail-dot {
+  position: absolute;
+  inset-inline-start: -1.6rem;
+  top: 2rem;
+
+  width: 0.55rem;
+  height: 0.55rem;
+
+  border-radius: 999px;
+
+  background: #cbd5e1;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.9);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.service-row.is-dark .service-rail-dot {
+  background: #475569;
+  border-color: #020617;
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.9);
+}
+
+.service-row.is-active .service-rail-dot {
+  background: #0ea5e9;
+  box-shadow:
+    0 0 0 3px rgba(224, 242, 254, 0.9),
+    0 0 15px 3px rgba(14, 165, 233, 0.6);
+  transform: scale(1.15);
+}
+
+.service-row.is-active.is-dark .service-rail-dot {
+  background: #38bdf8;
+  box-shadow:
+    0 0 0 3px rgba(15, 23, 42, 0.9),
+    0 0 15px 3px rgba(56, 189, 248, 0.7);
+}
+
+@media (max-width: 640px) {
+  .service-rail-dot {
+    inset-inline-start: -1.2rem;
+    top: 1.6rem;
+  }
+}
+
+/* =========================================================
+   Row Content
+========================================================= */
+
+.service-row-content {
+  position: relative;
+  z-index: 1;
+}
+
+.service-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  min-height: 3rem;
+}
+
+.service-row-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.service-index {
+  flex-shrink: 0;
+
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+
+  color: #94a3b8;
+
+  transition: color 0.3s ease;
+}
+
+.service-row.is-active .service-index {
+  color: #0ea5e9;
+}
+
+.service-row.is-active.is-dark .service-index {
+  color: #7dd3fc;
+}
+
+/* Icon box */
+.service-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  border-radius: 0.85rem;
+
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.12),
+    rgba(56, 189, 248, 0.06)
+  );
+  color: #0284c7;
+
+  border: 1px solid rgba(14, 165, 233, 0.1);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.service-row.is-dark .service-icon-box {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.18),
+    rgba(56, 189, 248, 0.05)
+  );
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.15);
+}
+
+.service-row.is-active .service-icon-box {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: #ffffff;
+  border-color: transparent;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px -8px rgba(14, 165, 233, 0.6);
+}
+
+/* Title */
+.service-title {
+  flex: 1;
+  min-width: 0;
+
+  margin: 0;
+
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+
+  color: #0f172a;
+
+  transition: color 0.3s ease;
+}
+
+.service-row.is-dark .service-title {
+  color: #f1f5f9;
+}
+
+.service-row.is-active .service-title {
+  color: #0284c7;
+}
+
+.service-row.is-active.is-dark .service-title {
+  color: #7dd3fc;
+}
+
+@media (min-width: 640px) {
+  .service-title {
+    font-size: 1.15rem;
+  }
+}
+
+/* Arrow */
+.service-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  border-radius: 0.7rem;
+
+  background: rgba(14, 165, 233, 0.08);
+  color: #0ea5e9;
+
+  transition:
+    background 0.3s ease,
+    transform 0.25s ease;
+}
+
+.service-row.is-dark .service-arrow {
+  background: rgba(56, 189, 248, 0.1);
+  color: #7dd3fc;
+}
+
+.service-row.is-active .service-arrow {
+  background: rgba(14, 165, 233, 0.15);
+}
+
+/* =========================================================
+   Expanded content
+========================================================= */
+
+.service-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.25s ease;
+}
+
+.service-expand.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.service-expand > .service-expand-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.service-arrow {
+  transition: transform 0.25s ease;
+}
+
+.service-expand-inner {
+  padding-top: 1.25rem;
+  padding-inline-start: 3.65rem;
+}
+
+@media (max-width: 640px) {
+  .service-expand-inner {
+    padding-inline-start: 0;
+  }
+}
+
+.service-description {
+  margin: 0;
+
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.service-row.is-dark .service-description {
+  color: #cbd5e1;
+}
+
+/* ---------- Tags ---------- */
+
+.service-tags {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+
+  border: 1px dashed rgba(14, 165, 233, 0.28);
+  border-radius: 1rem;
+
+  background: rgba(14, 165, 233, 0.04);
+}
+
+.service-row.is-dark .service-tags {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.service-tags-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  margin-bottom: 0.65rem;
+
+  color: #0284c7;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-row.is-dark .service-tags-label {
+  color: #7dd3fc;
+}
+
+.service-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.service-tag {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.35rem 0.75rem;
+
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #334155;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.service-tag:hover {
+  transform: translateY(-1px);
+  border-color: #0ea5e9;
+  color: #0284c7;
+}
+
+.service-row.is-dark .service-tag {
+  border-color: rgba(56, 189, 248, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+  color: #cbd5e1;
+}
+
+/* ---------- CTA ---------- */
+
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  margin-top: 1.25rem;
+
+  color: #0ea5e9;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.service-cta:hover {
+  color: #0284c7;
+  gap: 0.6rem;
+}
+
+.service-row.is-dark .service-cta {
+  color: #7dd3fc;
+}
+
+.service-row.is-dark .service-cta:hover {
+  color: #38bdf8;
+}
+
+/* =========================================================
+   Small Mobile
+========================================================= */
+
+@media (max-width: 479px) {
+  .services-section {
+    padding: 3.5rem 0;
+  }
+
+  .services-title {
+    font-size: 1.55rem;
+  }
+
+  .services-description {
+    font-size: 0.85rem;
+  }
+
+  .service-row {
+    padding: 0.9rem 1rem;
+    border-radius: 1.1rem;
+  }
+
+  .service-icon-box {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .service-icon-box svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .service-title {
+    font-size: 0.95rem;
+  }
+
+  .service-index {
+    font-size: 0.7rem;
+  }
+
+  .service-ghost-number {
+    font-size: 4rem;
+    inset-inline-end: 1rem;
+  }
+
+  .service-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+  }
+
+  .service-tag {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+  }
+}
+
+/* =========================================================
+   Reduced motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-row,
+  .service-icon-box,
+  .service-arrow,
+  .service-tag,
+  .service-rail-dot {
+    transition: none !important;
+  }
+}

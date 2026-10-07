@@ -1,0 +1,323 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Custom font: Gandom
+========================================================= */
+@font-face {
+  font-family: "Gandom";
+  src: url("/fonts/Gandom.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gandom";
+  src: url("/fonts/Gandom.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================
+   Design tokens (Tailwind v4)
+========================================================= */
+@theme {
+  --color-page: #ffffff;
+  --color-page-dark: #030712;
+  --color-section: #f1f5f9;
+  --color-section-dark: #030712;
+  --color-surface: #ffffff;
+  --color-surface-dark: #0f172a;
+  --color-foreground: #1f2937;
+  --color-foreground-dark: #f9fafb;
+  --color-muted: #64748b;
+  --color-muted-dark: #94a3b8;
+  --color-border: #e5e7eb;
+  --color-border-dark: #1e293b;
+  --color-primary: #0ea5e9;
+  --color-primary-hover: #0284c7;
+  --color-primary-soft: #e0f2fe;
+
+  --radius-card: 1rem;
+  --radius-card-lg: 1.5rem;
+  --radius-pill: 9999px;
+
+  --font-sans: "Gandom", "Vazirmatn", "Inter", sans-serif;
+}
+
+/* =========================================================
+   Global foundation
+========================================================= */
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  background: var(--color-page);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.dark body {
+  background: var(--color-page-dark);
+  color: var(--color-foreground-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   IMPORTANT: `video` removed from global reset
+   so hero video can fill its container properly.
+========================================================= */
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HERO VIDEO — always full-bleed, never letterboxed
+========================================================= */
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #030712;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-in {
+  animation: hero-fade-in 0.45s ease both;
+}
+
+.hero-fade-in-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.hero-fade-in-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.hero-fade-in-delay-3 {
+  animation-delay: 0.24s;
+}
+
+@keyframes hero-scroll-hint {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+.hero-scroll-hint {
+  animation: hero-scroll-hint 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-in,
+  .hero-scroll-hint {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   Shared layout helpers
+========================================================= */
+.page-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 2rem;
+  }
+}
+
+.section-padding {
+  padding-block: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding-block: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 6.25rem;
+  }
+}
+
+.section-muted {
+  background: var(--color-section);
+}
+
+.dark .section-muted {
+  background: var(--color-section-dark);
+}
+
+.section-surface {
+  background: var(--color-page);
+}
+
+.dark .section-surface {
+  background: var(--color-page-dark);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 1rem;
+  z-index: 100;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Skip painting off-screen sections until needed */
+#about,
+#services,
+#portfolio,
+#blog,
+#contact,
+.company-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}

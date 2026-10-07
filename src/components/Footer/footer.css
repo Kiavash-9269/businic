@@ -1,0 +1,450 @@
+/* =========================================================
+   FOOTER — Compact & Modern
+========================================================= */
+
+.footer {
+  position: relative;
+  padding: 3rem 0 1.25rem;
+  background: #f8fafc;
+  border-top: 1px solid rgba(15, 23, 42, 0.07);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.footer-dark {
+  background: #0a1017;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Top accent gradient line */
+.footer-accent {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(14, 165, 233, 0.5),
+    rgba(56, 189, 248, 0.3),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   Main Grid
+========================================================= */
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 1.5rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.footer-dark .footer-main {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 640px) {
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-main {
+    grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+    gap: 2.5rem;
+  }
+}
+
+/* =========================================================
+   Brand
+========================================================= */
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 22rem;
+}
+
+@media (max-width: 1023px) {
+  .footer-brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+.footer-logo {
+  display: block;
+  width: min(130px, 40vw);
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-dark .footer-logo {
+  filter: brightness(1.05);
+}
+
+.footer-brand-text {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.75;
+}
+
+.footer-dark .footer-brand-text {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   Social
+========================================================= */
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 0.7rem;
+
+  background: #ffffff;
+  color: #475569;
+
+  font-size: 0.9rem;
+
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.footer-dark .footer-social a {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+}
+
+.footer-social a:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10px 24px -8px rgba(14, 165, 233, 0.5);
+}
+
+.footer-dark .footer-social a:hover {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+  box-shadow: 0 10px 24px -8px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================================
+   Columns
+========================================================= */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.footer-column h3 {
+  margin: 0 0 0.25rem;
+
+  color: #0f172a;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-dark .footer-column h3 {
+  color: #f8fafc;
+}
+
+.footer-column a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+
+  color: #64748b;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.55;
+  text-decoration: none;
+
+  width: fit-content;
+
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.footer-dark .footer-column a {
+  color: #94a3b8;
+}
+
+.footer-column a:hover {
+  color: #0ea5e9;
+}
+
+.footer-column a svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  opacity: 0.75;
+}
+
+/* Contact specifics */
+.footer-contact a {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.footer-contact a span {
+  min-width: 0;
+}
+
+/* =========================================================
+   Bottom bar
+========================================================= */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding-top: 1.25rem;
+}
+
+.footer-copy {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.footer-dark .footer-copy {
+  color: #94a3b8;
+}
+
+.footer-copy-brand {
+  color: #0ea5e9;
+  font-weight: 800;
+}
+
+.footer-dark .footer-copy-brand {
+  color: #7dd3fc;
+}
+
+/* Scroll top button */
+.footer-top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.35rem;
+  height: 2.35rem;
+  flex-shrink: 0;
+
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 0.75rem;
+
+  background: #ffffff;
+  color: #475569;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.footer-dark .footer-top-btn {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.footer-top-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10px 24px -8px rgba(14, 165, 233, 0.5);
+}
+
+.footer-dark .footer-top-btn:hover {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+  box-shadow: 0 10px 24px -8px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================================
+   Mobile — compact
+========================================================= */
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Brand full-width */
+  .footer-brand {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    text-align: start;
+    max-width: 100%;
+    gap: 0.75rem;
+  }
+
+  .footer-logo {
+    width: min(110px, 36vw);
+  }
+
+  .footer-brand-text {
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  /* Social icons — کمی کوچک‌تر */
+  .footer-social {
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .footer-social a {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.82rem;
+    border-radius: 0.6rem;
+  }
+
+  /* Columns */
+  .footer-column {
+    gap: 0.5rem;
+  }
+
+  .footer-column h3 {
+    font-size: 0.65rem;
+    margin-bottom: 0.15rem;
+    letter-spacing: 0.12em;
+  }
+
+  .footer-column a {
+    font-size: 0.78rem;
+    gap: 0.4rem;
+    line-height: 1.45;
+  }
+
+  .footer-column a svg {
+    width: 13px;
+    height: 13px;
+    margin-top: 0.1rem;
+  }
+
+  /* Contact column — تمام عرض تا ایمیل‌ها جا بشن */
+  .footer-contact {
+    grid-column: 1 / -1;
+  }
+
+  .footer-contact a {
+    font-size: 0.76rem;
+    gap: 0.45rem;
+  }
+
+  .footer-contact a span {
+    word-break: break-all;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    flex-direction: row;
+    padding-top: 1rem;
+    gap: 0.75rem;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    text-align: start;
+  }
+
+  .footer-top-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.6rem;
+  }
+
+  .footer-top-btn svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* =========================================================
+   Extra small — خیلی کوچک‌تر
+========================================================= */
+
+@media (max-width: 380px) {
+  .footer-main {
+    gap: 1.25rem 0.85rem;
+  }
+
+  .footer-column a {
+    font-size: 0.74rem;
+  }
+
+  .footer-contact a {
+    font-size: 0.72rem;
+  }
+
+  .footer-copy {
+    font-size: 0.65rem;
+  }
+}
+
+/* =========================================================
+   Reduced motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-social a,
+  .footer-column a,
+  .footer-top-btn {
+    transition: none !important;
+  }
+}

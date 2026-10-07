@@ -1,0 +1,778 @@
+/* =========================================================
+   PORTFOLIO — Light & Fast
+========================================================= */
+
+.pf-section {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pf-section-dark {
+  background: transparent;
+}
+
+/* =========================================================
+   Background — single radial glow (NO blur filter)
+========================================================= */
+
+.pf-bg-glow {
+  position: absolute;
+  top: 10%;
+  inset-inline-start: -20%;
+  width: 50rem;
+  height: 50rem;
+  max-width: 90vw;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(14, 165, 233, 0.18),
+    transparent 60%
+  );
+
+  pointer-events: none;
+  z-index: -2;
+}
+
+.pf-section-dark .pf-bg-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(56, 189, 248, 0.14),
+    transparent 60%
+  );
+}
+
+/* Grid pattern — CSS only, no animation */
+.pf-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(15, 23, 42, 0.07) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+
+  mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 40%,
+    #000 30%,
+    transparent 80%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 40%,
+    #000 30%,
+    transparent 80%
+  );
+}
+
+.pf-section-dark .pf-grid-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 0
+  );
+}
+
+/* =========================================================
+   Header
+========================================================= */
+
+.pf-header {
+  max-width: 48rem;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.pf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.pf-eyebrow-line {
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0ea5e9);
+}
+
+.pf-eyebrow-line:last-child {
+  background: linear-gradient(90deg, #0ea5e9, transparent);
+}
+
+.pf-eyebrow-text {
+  color: #0284c7;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.pf-section-dark .pf-eyebrow-text {
+  color: #7dd3fc;
+}
+
+.pf-title {
+  margin: 1.25rem 0 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+
+.pf-section-dark .pf-title {
+  color: #f8fafc;
+}
+
+.pf-title-serif {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pf-section-dark .pf-title-serif {
+  background: linear-gradient(135deg, #f8fafc 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pf-subtitle {
+  max-width: 38rem;
+  margin: 1.25rem auto 0;
+  color: #64748b;
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  line-height: 1.9;
+}
+
+.pf-section-dark .pf-subtitle {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   List & Rail
+========================================================= */
+
+.pf-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.pf-list-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: 1.35rem;
+
+  width: 2px;
+
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(14, 165, 233, 0.25) 8%,
+    rgba(14, 165, 233, 0.25) 92%,
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .pf-list-rail {
+    inset-inline-start: 2rem;
+  }
+}
+
+.pf-section-dark .pf-list-rail {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(56, 189, 248, 0.3) 8%,
+    rgba(56, 189, 248, 0.3) 92%,
+    transparent
+  );
+}
+
+/* =========================================================
+   Card
+========================================================= */
+
+.pf-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding-inline-start: 3.5rem;
+
+  /* 🚀 Performance — رندر فقط وقتی نزدیک ویوپورت */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+@media (min-width: 768px) {
+  .pf-card {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding-inline-start: 5rem;
+  }
+
+  .pf-card-reversed {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+
+  .pf-card-reversed .pf-media {
+    order: 2;
+  }
+
+  .pf-card-reversed .pf-content {
+    order: 1;
+  }
+}
+
+/* Number */
+.pf-number {
+  position: absolute;
+  top: -0.5rem;
+  inset-inline-start: 0;
+
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-style: italic;
+
+  color: rgba(14, 165, 233, 0.13);
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+.pf-section-dark .pf-number {
+  color: rgba(56, 189, 248, 0.14);
+}
+
+/* Rail dot */
+.pf-card::before {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  inset-inline-start: 1.05rem;
+
+  width: 0.7rem;
+  height: 0.7rem;
+
+  border-radius: 999px;
+
+  background: #cbd5e1;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.9);
+
+  z-index: 3;
+}
+
+.pf-section-dark .pf-card::before {
+  background: #475569;
+  border-color: #020617;
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.9);
+}
+
+@media (min-width: 768px) {
+  .pf-card::before {
+    top: 2rem;
+    inset-inline-start: 1.7rem;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+/* =========================================================
+   Media (Image)
+========================================================= */
+
+.pf-media {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.pf-media-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+
+  border-radius: 1.1rem;
+
+  background: #f1f5f9;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 16px 40px -20px rgba(15, 23, 42, 0.14);
+
+  /* 🚀 Performance — ایزوله کردن رندر */
+  contain: layout paint style;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.pf-section-dark .pf-media-inner {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 16px 40px -20px rgba(0, 0, 0, 0.55);
+}
+
+/* 🚀 Fade-in نرم بعد از لود */
+.pf-media-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.pf-media-image.is-loaded {
+  opacity: 1;
+}
+
+.pf-media-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+  color: #64748b;
+  opacity: 1;
+}
+
+/* Skeleton */
+.pf-media-skeleton {
+  position: absolute;
+  inset: 0;
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.pf-section-dark .pf-media-skeleton {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Arrow badge */
+.pf-media-arrow {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: #ffffff;
+
+  box-shadow: 0 8px 20px -8px rgba(14, 165, 233, 0.6);
+
+  opacity: 0;
+  transform: translateY(-6px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pf-card:hover .pf-media-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   Content
+========================================================= */
+
+.pf-content {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: #0284c7;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  margin-bottom: 0.75rem;
+}
+
+.pf-category::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: #0ea5e9;
+}
+
+.pf-section-dark .pf-category {
+  color: #7dd3fc;
+}
+
+.pf-section-dark .pf-category::before {
+  background: #38bdf8;
+}
+
+.pf-card-title {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.pf-section-dark .pf-card-title {
+  color: #f8fafc;
+}
+
+.pf-card-text {
+  margin: 0.85rem 0 1.5rem;
+
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.8;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pf-section-dark .pf-card-text {
+  color: #94a3b8;
+}
+
+/* CTA */
+.pf-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  align-self: flex-start;
+
+  padding: 0.65rem 1.1rem;
+
+  border-radius: 999px;
+
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    gap 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pf-cta:hover {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: #ffffff;
+  gap: 0.75rem;
+  transform: translateY(-2px);
+}
+
+.pf-section-dark .pf-cta {
+  background: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+}
+
+.pf-section-dark .pf-cta:hover {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+}
+
+/* =========================================================
+   Featured Card — Hover Scroll (فقط کارت اول)
+========================================================= */
+
+/* ارتفاع ثابت کانتینر برای تصویر ویژه */
+.pf-card.is-featured {
+  --media-h: 280px;
+}
+
+.pf-card.is-featured .pf-media-inner {
+  aspect-ratio: unset;
+  height: var(--media-h);
+  cursor: pointer;
+}
+
+.pf-card.is-featured .pf-media-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+
+  /* transition طولانی برای اسکرول نرم */
+  transition:
+    transform 10s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease;
+
+  transform: translateY(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* هاور → تصویر اسکرول می‌کنه پایین */
+.pf-card.is-featured:hover .pf-media-image.is-loaded {
+  /* چون تصویر بلندتره، با translateY منفی، پایین تصویر دیده می‌شه */
+  transform: translateY(calc(-100% + var(--media-h)));
+}
+
+/* در دسکتاپ بزرگ‌تر، ارتفاع بیشتر */
+@media (min-width: 768px) {
+  .pf-card.is-featured {
+    --media-h: 320px;
+  }
+}
+
+/* موبایل — کوچیک‌تر و سریع‌تر */
+@media (max-width: 767px) {
+  .pf-card.is-featured {
+    --media-h: 220px;
+  }
+
+  .pf-card.is-featured .pf-media-image {
+    transition:
+      transform 6s ease-out,
+      opacity 0.4s ease;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pf-card.is-featured .pf-media-image {
+    transition: opacity 0.5s ease !important;
+  }
+  .pf-card.is-featured:hover .pf-media-image.is-loaded {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   More Button
+========================================================= */
+
+.pf-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.pf-more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+
+  border: 1.5px solid rgba(14, 165, 233, 0.35);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #0284c7;
+
+  font-size: 0.85rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.pf-section-dark .pf-more-button {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+}
+
+.pf-more-button:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -12px rgba(14, 165, 233, 0.45);
+}
+
+.pf-section-dark .pf-more-button:hover {
+  background: rgba(15, 23, 42, 1);
+}
+
+.pf-more-label {
+  white-space: nowrap;
+}
+
+.pf-more-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.15rem;
+  height: 2.15rem;
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: #ffffff;
+
+  transition: transform 0.3s ease;
+}
+
+.pf-more-button:hover .pf-more-circle {
+  transform: scale(1.06);
+}
+
+.pf-more-circle svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.pf-section-dark .pf-more-circle {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+}
+
+/* =========================================================
+   Mobile
+========================================================= */
+
+@media (max-width: 767px) {
+  .pf-card {
+    padding-inline-start: 3rem;
+    contain-intrinsic-size: auto 420px;
+  }
+
+  .pf-card::before {
+    top: 1rem;
+    inset-inline-start: 0.9rem;
+  }
+
+  .pf-number {
+    font-size: 2.25rem;
+    top: -0.35rem;
+  }
+
+  /* Show arrow always on mobile */
+  .pf-media-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .pf-section {
+    padding: 3.75rem 0;
+  }
+
+  .pf-title {
+    font-size: 1.85rem;
+  }
+
+  .pf-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .pf-list-rail {
+    inset-inline-start: 1.05rem;
+  }
+
+  .pf-card {
+    padding-inline-start: 2.5rem;
+    gap: 1rem;
+    contain-intrinsic-size: auto 380px;
+  }
+
+  .pf-card::before {
+    top: 0.85rem;
+    inset-inline-start: 0.7rem;
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  .pf-number {
+    font-size: 1.85rem;
+  }
+
+  .pf-media-inner {
+    border-radius: 0.9rem;
+  }
+
+  .pf-card-title {
+    font-size: 1.15rem;
+  }
+
+  .pf-card-text {
+    font-size: 0.82rem;
+  }
+
+  .pf-cta {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.78rem;
+  }
+
+  .pf-media-arrow {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+}
+
+/* =========================================================
+   Reduced motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-media-image {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+
+  .pf-media-arrow,
+  .pf-cta,
+  .pf-more-button {
+    transition: none !important;
+  }
+}

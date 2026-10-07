@@ -1,0 +1,270 @@
+/* ============================= */
+/* Company Logos Section         */
+/* ============================= */
+
+.company-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  width: 100%;
+  padding: 4rem 1rem;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 640px) {
+  .company-section {
+    padding: 5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-section {
+    padding: 6.25rem 2rem;
+  }
+}
+
+.company-light {
+  background: var(--color-section);
+}
+
+.company-dark {
+  background: var(--color-section-dark);
+}
+
+/* ============================= */
+/* Background Image — Fixed      */
+/* ============================= */
+
+.company-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("/images/logos/bg-logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  opacity: 1;
+  pointer-events: none;
+}
+
+.company-dark .company-bg {
+  opacity: 1;
+}
+
+/* Content above background */
+.company-header,
+.company-grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================= */
+/* Header                        */
+/* ============================= */
+
+.company-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .company-header {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-header {
+    margin-bottom: 3.75rem;
+  }
+}
+
+.company-header span {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .company-header span {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+}
+
+/* ============================= */
+/* Title — همیشه سفید            */
+/* ============================= */
+
+.company-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+
+  /* سایه ملایم برای خوانایی روی هر پس‌زمینه */
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* override تم‌ها — تا همیشه سفید بمونه */
+.company-light .company-header h2,
+.company-dark .company-header h2 {
+  color: #ffffff;
+}
+
+/* ============================= */
+/* Grid                          */
+/* ============================= */
+
+.company-grid {
+  max-width: 60rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .company-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .company-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-grid {
+    gap: 18px;
+  }
+}
+
+/* ============================= */
+/* Card                          */
+/* ============================= */
+
+.company-card {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+@media (min-width: 640px) {
+  .company-card {
+    height: 90px;
+    border-radius: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-card {
+    height: 100px;
+    border-radius: var(--radius-card-lg);
+  }
+}
+
+.company-light .company-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.company-dark .company-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.company-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(14, 165, 233, 0.15);
+}
+
+@media (max-width: 767px) {
+  .company-card:active {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.1);
+  }
+}
+
+/* ============================= */
+/* Logos — بزرگ‌تر                */
+/* ============================= */
+
+.company-card img,
+.company-logo-fallback {
+  max-width: 130px;
+  max-height: 55px;
+  object-fit: contain;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: 0.35s ease;
+}
+
+.company-logo-fallback {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  opacity: 1;
+  filter: none;
+  font-size: 11px;
+  border-radius: inherit;
+}
+
+@media (min-width: 640px) {
+  .company-card img {
+    max-width: 150px;
+    max-height: 65px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-card img {
+    max-width: 170px;
+    max-height: 75px;
+  }
+}
+
+.company-card:hover img {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.08);
+}
+
+.company-dark .company-card img {
+  opacity: 0.7;
+  filter: grayscale(100%) brightness(1.8);
+}
+
+.company-dark .company-card:hover img {
+  opacity: 1;
+  filter: grayscale(0) brightness(1);
+}
+
+/* ============================= */
+/* Mobile: disable fixed (iOS)   */
+/* ============================= */
+
+@media (max-width: 767px) {
+  .company-bg {
+    background-attachment: scroll;
+  }
+}

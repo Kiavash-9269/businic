@@ -1,0 +1,9 @@
+process.env.NODE_ENV = 'test';
+process.env.PORT = '3001';
+process.env.FRONTEND_ORIGIN = 'http://localhost:5173';
+process.env.MAIL_HOST = 'smtp.example.com';
+process.env.MAIL_PORT = '587';
+process.env.MAIL_FROM = 'noreply@example.com';
+process.env.CONTACT_EMAIL = 'team@example.com';
+process.env.THROTTLE_TTL_MS = '60000';
+process.env.THROTTLE_LIMIT = '100';
